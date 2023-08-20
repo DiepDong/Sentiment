@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+
+
+        h1 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .prediction-title {
+            color: white; /* Thay đổi màu chữ cho tiêu đề dự đoán cảm xúc */
+            background-color: #e83e8c; /* Màu nền dự đoán cảm xúc */
+            padding: 10px; /* Tạo khoảng trống xung quanh nền */
+            border-radius: 5px; /* Bo góc nền */
+        }
+        h2 {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    {% extends "index.html" %}
+
+    {% block content %}
+        <h1><strong>Sentiment Analysis</strong></h1>
+        <form action="{{ url_for('home') }}" method="POST">
+            <label for="text">Enter a text:</label><br>
+            <textarea id="text" name="text" rows="4" cols="50">{{ input_text }}</textarea><br><br>
+            <input type="submit" name="predict" value="Predict">
+        </form>
+    
+        <div id="preprocessed-text">
+            {% if preprocessed_text %}
+            <p>
+                <strong>Preprocessed Text:</strong>
+                {{ preprocessed_text }}
+            </p>
+            {% endif %}
+        </div>
+        
+        <div id="prediction-result">
+            {% if predicted_label %}
+                <h2 class="prediction-title">{{ predicted_label }}</h2>
+                <form method="POST" action="{{ url_for('home') }}">
+                    <input type="hidden" name="text" value="{{ preprocessed_text }}">
+                    <input type="hidden" name="user-feedback" value="confirm">
+                    <input type="hidden" name="prediction-confirmation" value="{{ prediction_confirmation }}">
+                    <button type="submit" name="action" value="save-prediction">Save Prediction</button>
+                </form>
+                <form method="POST" action="{{ url_for('home') }}">
+                    <input type="hidden" name="text" value="{{ preprocessed_text }}">
+                    <input type="hidden" name="user-feedback" value="incorrect">
+                    <input type="hidden" name="prediction-confirmation" value="false">
+                    <button type="submit" name="action" value="incorrect">Incorrect, Choose Correct Label</button>
+                    {% if show_correction_input %}
+                        <label for="corrected-label">Select Correct Emotion Label:</label><br>
+                        <select id="corrected-label" name="corrected-label">
+                            <option value="Disgust🤮">Disgust🤮</option>
+                            <option value="Enjoyment🥰">Enjoyment🥰</option>
+                            <option value="Anger😡">Anger😡</option>
+                            <option value="Surprise😮">Surprise😮</option>
+                            <option value="Sadness😔">Sadness😔</option>
+                            <option value="Fear🫣">Fear🫣</option>
+                            <option value="Other">Other</option>
+                        </select><br>
+                        <button type="submit" name="action" value="save-correction">Save Correction</button>
+                    {% endif %}
+                </form>
+    
+                <form action="{{ url_for('home') }}" method="POST">
+                    <label for="chart-type">Select a chart type:</label>
+                    <select id="chart-type" name="chart-type">
+                        <option value="bar" {% if selected_chart == 'bar' %}selected{% endif %}>Bar Chart</option>
+                        <option value="pie" {% if selected_chart == 'pie' %}selected{% endif %}>Pie Chart</option>
+                    </select>
+                    <input type="hidden" name="text" value="{{ input_text }}">
+                    <input type="submit" name="chart-select" value="Select">
+                </form>
+                {% if plotly_chart %}
+                    {{ plotly_chart | safe }}
+                {% endif %}
+                {% if plotly_pie_chart %}
+                    {{ plotly_pie_chart | safe }}
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endblock %}
+    
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>   
+</body>
+</html>
