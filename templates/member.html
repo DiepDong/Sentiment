@@ -1,0 +1,84 @@
+{% extends "index.html" %}
+
+{% block content %}
+<style>
+.avatar {
+        width: 100%;
+        max-width: 200px; /* Adjust this value to your preference */
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px; /* Set a fixed height for uniformity */
+        overflow: hidden; /* Hide any overflowing content (for taller images) */
+    }
+    .avatar img {
+        width: auto;
+        height: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+    .member-card {
+    background-color: rgba(248, 249, 250, 0.8); /* Semi-transparent light gray background color */
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+    
+</style>
+<div class="container">
+    <div class="page-header">
+        <h1 class="mt-4 mb-3 text-center"><strong>Member</strong></h1>
+    </div>
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="card text-center member-card ">
+                <div class="avatar">
+                    <img src="static/Dong.jpg" class="card-img-top" alt="Profile Image">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Diệp Gia Đông</h5>
+                    <p class="card-text">ID:QE170049</p>
+                    <p class="card-text">Mood: 😄</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card text-center member-card">
+                <div class="avatar">
+                    <img src="static/Trung.jpg" class="card-img-top" alt="Profile Image">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Phan Quốc Trung</h5>
+                    <p class="card-text">ID:QE170085</p>
+                    <p class="card-text">Mood: 🤣</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card text-center member-card">
+                <div class="avatar">
+                    <img src="static/Dat.jpg" class="card-img-top" alt="Profile Image">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Trần Tiến Đạt</h5>
+                    <p class="card-text">ID:QE170053</p>
+                    <p class="card-text">Mood: 😊</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card text-center member-card">
+                <div class="avatar">
+                    <img src="static/Bao.jpg" class="card-img-top" alt="Profile Image">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Hồ Tôn Bảo</h5>
+                    <p class="card-text">ID:QE170017</p>
+                    <p class="card-text">Mood: ❤️</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
