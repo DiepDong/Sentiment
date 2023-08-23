@@ -7,8 +7,8 @@
         margin: 40px auto;
         padding: 20px;
         background-color: rgba(255, 255, 255, 0.8);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     .introduction-text {
@@ -18,25 +18,20 @@
     }
 </style>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8 introduction-container">
-            <h1>Introduction to Sentiment Analysis</h1>
-            <p class="introduction-text">
-                Sentiment analysis is a natural language processing technique that aims to determine the sentiment or emotion expressed in a piece of text.
-                It involves analyzing text data to classify the sentiment as positive, negative, neutral, or other emotional states such as anger, joy, sadness, and more.
-                Sentiment analysis has various applications, including social media monitoring, customer feedback analysis, and brand reputation management.
-            </p>
-            <p class="introduction-text">
-                In this web application, you can input a text, and the sentiment analysis model will predict the emotional state conveyed by the text.
-                The model has been trained to recognize various emotions and sentiments in Vietnamese text using advanced machine learning techniques.
-                You can explore the predictions, visualize the emotion percentages, and even provide feedback to improve the model's accuracy.
-            </p>
-        <div class="text-center">
-            <img src="{{ url_for('static', filename='QR.png') }}" alt="Mã QR" width="400" height="400">
-        </div>
-        </div>
-        </div>
+    <div class="introduction-container">
+        <h1>Introduction to Sentiment Analysis</h1>
+        <p class="introduction-text">
+            Sentiment analysis is a natural language processing technique that aims to determine the sentiment or emotion expressed in a piece of text.
+            It involves analyzing text data to classify the sentiment as positive, negative, neutral, or other emotional states such as anger, joy, sadness, and more.
+            Sentiment analysis has various applications, including social media monitoring, customer feedback analysis, and brand reputation management.
+        </p>
+        <p class="introduction-text">
+            In this web application, you can input a text, and the sentiment analysis model will predict the emotional state conveyed by the text.
+            The model has been trained to recognize various emotions and sentiments in Vietnamese text using advanced machine learning techniques.
+            You can explore the predictions, visualize the emotion percentages, and even provide feedback to improve the model's accuracy.
+        </p>
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='QR.png') }}" alt="Mã QR" width="400" height="400">
     </div>
-</div>
+    </div>
 {% endblock %}
