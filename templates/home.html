@@ -1,11 +1,11 @@
+{% extends "index.html" %}
+
+{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Sentiment Analysis</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
     <style>
-
-
         h1 {
             text-align: center;
         }
@@ -37,13 +37,9 @@
             margin-top: 20px;
             text-align: center;
         }
-
     </style>
 </head>
 <body>
-    {% extends "index.html" %}
-
-    {% block content %}
         <h1><strong>Sentiment Analysis</strong></h1>
         <form action="{{ url_for('home') }}" method="POST">
             <label for="text">Enter a text:</label><br>
@@ -66,7 +62,7 @@
                 <form method="POST" action="{{ url_for('home') }}">
                     <input type="hidden" name="text" value="{{ preprocessed_text }}">
                     <input type="hidden" name="user-feedback" value="confirm">
-                    <input type="hidden" name="prediction-confirmation" value="{{ prediction_confirmation }}">
+                    <input type="hidden" name="prediction-confirmation" value="True">
                     <button type="submit" name="action" value="save-prediction">Save Prediction</button>
                 </form>
                 <form method="POST" action="{{ url_for('home') }}">
@@ -75,7 +71,7 @@
                     <input type="hidden" name="prediction-confirmation" value="false">
                     <button type="submit" name="action" value="incorrect">Incorrect, Choose Correct Label</button>
                     {% if show_correction_input %}
-                        <label for="corrected-label">Select Correct Emotion Label:</label><br>
+                        <br><label for="corrected-label">Select Correct Emotion Label:</label><br>
                         <select id="corrected-label" name="corrected-label">
                             <option value="Disgust🤮">Disgust🤮</option>
                             <option value="Enjoyment🥰">Enjoyment🥰</option>
@@ -110,6 +106,5 @@
     
     </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>   
 </body>
 </html>
