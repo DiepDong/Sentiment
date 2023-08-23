@@ -1,0 +1,5 @@
+vui,	Enjoyment🥰
+vui,	Disgust🤮
+met,	Disgust🤮
+vui,	Enjoyment🥰
+vui,	Disgust🤮
