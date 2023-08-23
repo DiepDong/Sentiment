@@ -37,7 +37,7 @@ def map_position_to_label(position):
     return label_mapping.get(position, "Unknown")
 
 def save_corrected_label(text, corrected_label):
-    with open('corrected_labels.txt', 'a', encoding='utf-8') as f:
+    with open('feedback.txt', 'a', encoding='utf-8') as f:
         f.write(f"{text},\t{corrected_label}\n")
 
 @app.route('/')
